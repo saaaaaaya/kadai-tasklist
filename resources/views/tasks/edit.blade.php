@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @if (Auth::user()->id == $task->user_id)
     <h1>id: {{ $task->id }} のタスク編集ページ</h1>
     
         <div class="row">
@@ -18,6 +18,10 @@
                         {!! Form::submit('更新', ['class' => 'btn btn-default']) !!}
             
                 {!! Form::close() !!}
+   
             </div>
         </div>
+    @else
+        {{ print('<h2 class="alert alert-danger"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>You are not authorized for that action!</h2>')}}
+    @endif
 @endsection
