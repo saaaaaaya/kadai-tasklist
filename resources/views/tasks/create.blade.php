@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @if (Auth::check())
     <h1>タスク新規作成ページ</h1>
     
         <div class="row">
@@ -23,4 +23,7 @@
                 {!! Form::close() !!}
              </div>
         </div>
+    @else
+        {{ print('<h2 class="alert alert-danger"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>You are not authorized for that action!</h2>')}}
+    @endif
 @endsection
